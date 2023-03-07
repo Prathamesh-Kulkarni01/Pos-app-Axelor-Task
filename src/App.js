@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { Col, Row } from "react-bootstrap";
+import { Grid } from "@mui/material";
+
+import Nav from "./components/Nav";
+import ItemHolder from "./components/ItemHolder";
+import Cart from "./components/Cart";
+import ToastHolder from "./components/ToastHolder";
+import CartContext from "./context/CartContext";
+
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CartContext>
+        <Nav></Nav>
+        <ToastHolder></ToastHolder>
+        <Grid fluid="true">
+          <Row className="m-0 p-0">
+            <Col sm={8} className="m-0 p-0" >
+              <ItemHolder></ItemHolder>
+            </Col>
+            <Col sm={4} className="m-0 p-0">
+              <Cart></Cart>
+            </Col>
+          </Row>
+        </Grid>
+      </CartContext>
     </div>
   );
 }
