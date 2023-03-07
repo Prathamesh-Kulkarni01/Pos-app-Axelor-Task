@@ -6,10 +6,11 @@ import { Context } from "../context/CartContext";
 import { Products } from "../ProductData";
 
 const ItemHolder = () => {
+  const {displayData}=useContext(Context);
   return (
     <Container style={{ padding: "10px" }}>
       <Row xs={0} md={0}>
-        {Products.map((val) => {
+        {displayData.map((val) => {
           return <ProductItem key={val.id} item={val}></ProductItem>;
         })}
       </Row>

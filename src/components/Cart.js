@@ -4,10 +4,11 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { useContext } from "react";
 import { Context } from "../context/CartContext";
 
-import { Alert, Container } from "react-bootstrap";
+import { Alert, Button, Container } from "react-bootstrap";
+
 
 function Cart() {
-  const { cart, total } = useContext(Context);
+  const { cart, total,changeQuatity } = useContext(Context);
 
   return (
     <Container style={{ justifyContent: "left", margin: "8px 0px" }}>
@@ -23,9 +24,14 @@ function Cart() {
                 className="d-flex justify-content-between align-items-center"
               >
                 <div className="ms-2 me-auto">
-                  <div className="fw-bold">{val.title}</div>₹ {" " + val.price}{" "}
-                  x {val.quantity}
+                  <div className="fw-bold">{val.title}</div>
+                <div style={{justifyContent:'center',display:'flex'}}>
+                  <Button  variant="danger"style={{fontSize:'20px',padding:'10px',lineHeight:'0',height:"25px",width:'10px',borderRadius:'4px',margin:'1px 5px 1px 0px'}} onClick={()=>changeQuatity(val.id,true)}><p style={{marginLeft:'-5px'}}>-</p> </Button>
+                  {val.quantity}
+                  <Button  variant="success"style={{fontSize:'20px',padding:'10px',lineHeight:'0',height:"25px",width:'10px',borderRadius:'4px',margin:'1px 5px'}} onClick={()=>changeQuatity(val.id,false)}><p style={{marginLeft:'-5px'}}>+</p> </Button>
+                  </div>
                 </div>
+                
                 <Badge bg="primary" pill>
                   {val.price * val.quantity}.00
                 </Badge>

@@ -11,7 +11,7 @@ function ToastHolder(props) {
   const { toastArray } = useContext(Context);
 
   return (
-    <ToastContainer position="top-end" className="p-3">
+    <ToastContainer position="bottom-end" className="p-3">
       {toastArray.map((val,key) => {
         return <ToastItem key={key} item={val}></ToastItem>;
       })}
