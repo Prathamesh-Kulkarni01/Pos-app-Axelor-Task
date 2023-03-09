@@ -15,7 +15,7 @@ function TopBar() {
   const { filterBy, sortBy, cart } = useContext(Context);
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container className="p-0 m-0">
+      <Container className="pe-sm-2 m-0">
         <Navbar.Brand href="#home">Grocery Basket</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
