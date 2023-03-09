@@ -8,6 +8,8 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import { Context } from "../context/CartContext";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { OverlayTrigger, Popover } from "react-bootstrap";
+import Cart from "./Cart";
 
 function TopBar() {
   const { filterBy, sortBy, cart } = useContext(Context);
@@ -25,37 +27,37 @@ function TopBar() {
             >
               All
             </Nav.Link>
-            <Nav.Link href="#pricing" onClick={() => filterBy("fruit")}>
+            <Nav.Link href="#fruit" onClick={() => filterBy("fruit")}>
               Fruits
             </Nav.Link>
-            <Nav.Link href="#pricing" onClick={() => filterBy("vegetables")}>
+            <Nav.Link href="#vegetables" onClick={() => filterBy("vegetables")}>
               Vegetables
             </Nav.Link>
-            <Nav.Link href="#pricing" onClick={() => filterBy("seeds")}>
+            <Nav.Link href="#seeds" onClick={() => filterBy("seed")}>
               Seeds
             </Nav.Link>
             <NavDropdown title="Sort" id="collasible-nav-dropdown">
               <NavDropdown.Item
-                href="#action/3.1"
+                href="#sort/title"
                 onClick={() => sortBy("title")}
               >
                 By Title
               </NavDropdown.Item>
               <NavDropdown.Item
-                href="#action/3.2"
+                href="#sort/price"
                 onClick={() => sortBy("price")}
               >
                 By Price
               </NavDropdown.Item>
               <NavDropdown.Item
-                href="#action/3.3"
+                href="#sort/category"
                 onClick={() => sortBy("category")}
               >
                 By Category
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item
-                href="#action/3.4"
+                href="#clear/home"
                 onClick={() => sortBy("clear")}
               >
                 Clear
@@ -63,6 +65,22 @@ function TopBar() {
             </NavDropdown>
           </Nav>
          
+          <OverlayTrigger
+          trigger="click"
+          key={''}
+        
+          placement={'bottom-start'}
+          overlay={
+            <Popover style={{minWidth:'440px',marginTop:'-15px'  }} id={`popover-positioned-bottom`}>
+              <Popover.Header as="h3">Cart</Popover.Header>
+              <Popover.Body>
+               <Cart></Cart>
+              </Popover.Body>
+            </Popover>
+          }
+        >
+        
+        
             <Nav.Link
               href="#deets"
               style={{
@@ -76,7 +94,7 @@ function TopBar() {
                 fontSize: "20px",
               }}
             >
-              <p className="d-none d-xl-block d-xxl-block"
+              <p className=" d-lg-block d-none"
                 style={{
                   position: "absolute",
                   marginTop: "-1px",
@@ -94,7 +112,7 @@ function TopBar() {
               </p>{" "}
               <AiOutlineShoppingCart />
             </Nav.Link>
-       
+            </OverlayTrigger>
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -62,7 +62,8 @@ const CartContext = ({ children }) => {
       setTotal((total) => total + obj.price);
     } else {
       if (cart[index].quantity === 0) {
-        return;
+        setCart(data=>{const newData=data.filter(item=>item.id!==id); return newData})
+        return
       }
       cart[index].quantity = cart[index].quantity - 1;
       setTotal((total) => total - obj.price);

@@ -104,4 +104,18 @@ export const Products = [
       price: 10,
       url: "img/carrot.jpg",
     },
+    {
+      id: 16,
+      title: "Seed 1",
+      category: "seed",
+      price: 117,
+      url: "img/carrot.jpg",
+    },
+    {
+      id: 17,
+      title: "Seed 2",
+      category: "seed",
+      price: 18,
+      url: "img/carrot.jpg",
+    },
   ]

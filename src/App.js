@@ -11,14 +11,13 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App" style={{overflow:'hidden'}}>
-
-      <CartContext >
+    <div className="App" style={{ overflow: "hidden",minHeight:'100vh' }}>
+      <CartContext>
         <TopBar></TopBar>
         <ToastHolder></ToastHolder>
-        <Grid fluid="true" >
-          <Row className="m-0 p-0" >
-            <Col sm={8} className="m-0 p-0" >
+        <Grid fluid="true">
+          <Row className="m-0 p-0">
+            <Col sm={8} className="m-0 p-0">
               <ItemHolder></ItemHolder>
             </Col>
             <Col sm={4} className="m-0 p-0">
