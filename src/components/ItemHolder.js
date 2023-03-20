@@ -31,7 +31,7 @@ export const ProductItem = (props) => {
         justifyContent: "center",
         display: "flex",
         padding: " 8px",
-        margin: "0px 12px",
+        margin: "12px 12px",
         borderRadius: "3px",
        
       }}
