@@ -1,85 +1,81 @@
 import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
+import styled from "styled-components";
 
 import { useContext } from "react";
 import { Context } from "../context/CartContext";
 
 import { Alert, Button, Container } from "react-bootstrap";
 
+const QuantityButtons = styled(Button)`
+  font-size: 20px;
+  padding: 10px;
+  line-height: 0;
+  height: 25px;
+  width: 10px;
+  border-radius: 4px;
+  margin: 1px 5px 1px 4px;
+  color: #fff;
+  border: none;
+`;
 function Cart() {
-  const { cart, total, changeQuatity } = useContext(Context);
+  const { cart, total, changeQuantity } = useContext(Context);
 
+  if (!cart?.length) {
+    return (
+      <Alert className="my-3" variant="warning">
+        Cart is Empty
+      </Alert>
+    );
+  }
   return (
-    <Container style={{ justifyContent: "left", margin: "8px 0px" }}>
-      {cart?.length===undefined||cart.length === 0 ? (
-        <Alert variant="warning">Cart is Empty</Alert>
-      ) : (
-        <ListGroup as="ol" numbered>
-          {cart.map((val) => {
-            return (
-              <ListGroup.Item
-                key={val.id}
-                as="li"
-                className="d-flex justify-content-between align-items-center"
-              >
-                <div className="ms-2 me-auto">
-                  <div className="fw-bold">{val.title}</div>
-                  <div style={{ justifyContent: "center", display: "flex" }}>
-                    <Button
-                      variant="danger"
-                      style={{
-                        fontSize: "20px",
-                        padding: "10px",
-                        lineHeight: "0",
-                        height: "25px",
-                        width: "10px",
-                        borderRadius: "4px",
-                        margin: "1px 5px 1px 0px",
-                      }}
-                      onClick={() => changeQuatity(val.id, true)}
-                    >
-                      <p style={{ marginLeft: "-5px" }}>-</p>{" "}
-                    </Button>
-                    {val.quantity}
-                    <Button
-                      variant="success"
-                      style={{
-                        fontSize: "20px",
-                        padding: "10px",
-                        lineHeight: "0",
-                        height: "25px",
-                        width: "10px",
-                        borderRadius: "4px",
-                        margin: "1px 5px",
-                      }}
-                      onClick={() => changeQuatity(val.id, false)}
-                    >
-                      <p style={{ marginLeft: "-5px" }}>+</p>{" "}
-                    </Button>
-                  </div>
-                </div>
-
-                <Badge bg="primary" pill>
-                  {val.price * val.quantity}.00
-                </Badge>
-              </ListGroup.Item>
-            );
-          })}
-          <ListGroup>
-            <div
+    <Container className=" my-3">
+      <ListGroup as="ol" numbered>
+        {cart.map((val) => {
+          return (
+            <ListGroup.Item
+              key={val.id}
               as="li"
-              className="d-flex mx-1 justify-content-between align-items-center"
+              className="d-flex justify-content-between align-items-center"
             >
               <div className="ms-2 me-auto">
-                <div className="fw-bold">Net Total</div>
+                <div className="fw-bold">{val.title}</div>
+                <div className="d-flex justify-content-center">
+                  <QuantityButtons
+                    variant="danger"
+                    onClick={() => changeQuantity(val.id, true)}
+                  >
+                    <p style={{ marginLeft: "-5px" }}>-</p>{" "}
+                  </QuantityButtons>
+
+                  {val.quantity}
+
+                  <QuantityButtons
+                    variant="success"
+                    onClick={() => changeQuantity(val.id, false)}
+                  >
+                    <p style={{ marginLeft: "-5px" }}>+</p>{" "}
+                  </QuantityButtons>
+                </div>
               </div>
+
               <Badge bg="primary" pill>
-                {total}.00
+                {val.price * val.quantity}.00
               </Badge>
+            </ListGroup.Item>
+          );
+        })}
+        <ListGroup>
+          <ListGroup.Item as="li" className="d-flex rounded-0 border-top-0">
+            <div className="ms-2 me-auto">
+              <div className="fw-bold">Net Total</div>
             </div>
-          </ListGroup>
+            <Badge bg="primary" pill>
+              {total}.00
+            </Badge>
+          </ListGroup.Item>
         </ListGroup>
-      )}
+      </ListGroup>
     </Container>
   );
 }

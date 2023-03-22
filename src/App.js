@@ -1,5 +1,7 @@
-import { Col, Row } from "react-bootstrap";
-import { Grid } from "@mui/material";
+import React from "react";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 import TopBar from "./components/Nav";
 import ItemHolder from "./components/ItemHolder";
@@ -11,20 +13,20 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App" style={{ overflow: "hidden",minHeight:'100vh' }}>
+    <div className="App">
       <CartContext>
-        <TopBar></TopBar>
-        <ToastHolder></ToastHolder>
-        <Grid fluid="true">
+        <TopBar />
+        <ToastHolder />
+        <Container fluid="true">
           <Row className="m-0 p-0">
             <Col sm={8} className="m-0 p-0">
-              <ItemHolder></ItemHolder>
+              <ItemHolder />
             </Col>
             <Col sm={4} className="m-0 p-0">
-              <Cart></Cart>
+              <Cart />
             </Col>
           </Row>
-        </Grid>
+        </Container>
       </CartContext>
     </div>
   );

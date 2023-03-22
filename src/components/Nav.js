@@ -8,7 +8,9 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import { Context } from "../context/CartContext";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { OverlayTrigger, Popover } from "react-bootstrap";
+import  Popover  from "react-bootstrap/Popover";
+import  OverlayTrigger from "react-bootstrap/OverlayTrigger";
+
 import Cart from "./Cart";
 
 function TopBar() {
@@ -67,7 +69,7 @@ function TopBar() {
          
           <OverlayTrigger
           trigger="click"
-          key={''}
+          key={Math.random()}
         
           placement={'bottom-start'}
           overlay={

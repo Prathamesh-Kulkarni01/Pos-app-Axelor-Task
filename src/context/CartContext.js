@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { Products } from "../ProductData";
 export const Context = React.createContext();
@@ -10,13 +11,14 @@ const CartContext = ({ children }) => {
 
   //Adding Item in toast Stack and Cart Stack
   const onItemAdd = (obj) => {
-    setToastArray((array) => array.concat(obj));
-    if (cart.filter((i) => i.id === obj.id).length > 0) {
-      const index = cart.indexOf(obj);
-      cart[index].quantity = cart[index].quantity + 1;
+    setToastArray([...toastArray, obj]);
+    const index = cart.findIndex((i) => i.id === obj.id);
+    if (index >= 0) {
+      const updatedCart = [...cart];
+      updatedCart[index].quantity += 1;
+      setCart(updatedCart);
     } else {
-      obj.quantity = 1;
-      setCart((array) => array.concat(obj));
+      setCart([...cart, { ...obj, quantity: 1 }]);
     }
     //calculating Total
     setTotal((total) => total + obj.price);
@@ -24,10 +26,11 @@ const CartContext = ({ children }) => {
 
   //Removing item from toast stack
   const onTostRemove = (id) => {
-    const newArray = toastArray.filter((i) => i.id === id);
-    setToastArray(newArray);
+    // const newArray = toastArray.filter((i) => i.id === id);
+    setToastArray((newArray) => newArray.filter((i) => i.id === id));
   };
   //filter
+
   const filterBy = (query) => {
     if (query === "All") {
       setDisplayData(Products);
@@ -54,7 +57,7 @@ const CartContext = ({ children }) => {
     }
   };
   //Change Quantity
-  const changeQuatity = (id, query) => {
+  const changeQuantity = (id, query) => {
     const obj = cart.find((val) => val.id === id);
     const index = cart.indexOf(obj);
     if (!query) {
@@ -62,8 +65,11 @@ const CartContext = ({ children }) => {
       setTotal((total) => total + obj.price);
     } else {
       if (cart[index].quantity === 1) {
-        setCart(data=>{const newData=data.filter(item=>item.id!==id); return newData})
-        return
+        setCart((data) => {
+          const newData = data.filter((item) => item.id !== id);
+          return newData;
+        });
+
       }
       cart[index].quantity = cart[index].quantity - 1;
       setTotal((total) => total - obj.price);
@@ -81,7 +87,7 @@ const CartContext = ({ children }) => {
         displayData,
         filterBy,
         sortBy,
-        changeQuatity,
+        changeQuantity,
       }}
     >
       {children}
