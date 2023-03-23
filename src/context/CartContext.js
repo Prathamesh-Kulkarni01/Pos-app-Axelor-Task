@@ -26,16 +26,15 @@ const CartContext = ({ children }) => {
 
   //Removing item from toast stack
   const onTostRemove = (id) => {
-    // const newArray = toastArray.filter((i) => i.id === id);
     setToastArray((newArray) => newArray.filter((i) => i.id === id));
   };
   //filter
-
   const filterBy = (query) => {
+    console.log("-",query.toLocaleLowerCase())
     if (query === "All") {
       setDisplayData(Products);
     } else {
-      setDisplayData(Products.filter((val) => val.category === query));
+      setDisplayData(Products.filter((val) => val.category === query.toLocaleLowerCase()));
     }
   };
   //sort
@@ -69,10 +68,10 @@ const CartContext = ({ children }) => {
           const newData = data.filter((item) => item.id !== id);
           return newData;
         });
-
       }
       cart[index].quantity = cart[index].quantity - 1;
       setTotal((total) => total - obj.price);
+      return;
     }
   };
 

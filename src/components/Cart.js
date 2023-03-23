@@ -43,13 +43,13 @@ function Cart() {
                 <div className="d-flex justify-content-center">
                   <QuantityButtons
                     variant="danger"
-                    onClick={() => changeQuantity(val.id, true)}
+                    onClick={() => {
+                      changeQuantity(val.id, true);
+                    }}
                   >
                     <p style={{ marginLeft: "-5px" }}>-</p>{" "}
                   </QuantityButtons>
-
                   {val.quantity}
-
                   <QuantityButtons
                     variant="success"
                     onClick={() => changeQuantity(val.id, false)}
@@ -58,7 +58,6 @@ function Cart() {
                   </QuantityButtons>
                 </div>
               </div>
-
               <Badge bg="primary" pill>
                 {val.price * val.quantity}.00
               </Badge>

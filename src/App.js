@@ -17,7 +17,7 @@ function App() {
       <CartContext>
         <TopBar />
         <ToastHolder />
-        <Container fluid="true">
+        <Container fluid className="mt-5">
           <Row className="m-0 p-0">
             <Col sm={8} className="m-0 p-0">
               <ItemHolder />

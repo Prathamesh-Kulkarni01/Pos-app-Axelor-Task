@@ -1,26 +1,25 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "bootstrap/dist/css/bootstrap.min.css";
 .App {
-  
   width: 100%;
   top: 0;
   left: 0;
   right: 0;
   overflow: hidden;
-
 }
-body{
+body {
   overflow-x: hidden;
 }
-div{
+div {
   margin: 0;
   padding: 0;
 }
 
-@media screen and (max-width:600px) {
-.item{
-  width: 150px !important;
-} 
+@media screen and (max-width: 600px) {
+  .item {
+    width: 150px !important;
+  }
 }
-  
-
-
+.cart_budge {
+  padding: 0px 7px;
+  font-size: 13px;
+}

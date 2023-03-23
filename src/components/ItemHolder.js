@@ -25,8 +25,8 @@ export const ProductItem = (props) => {
   const { onItemAdd } = useContext(Context);
   return (
     <Card
+      className="w-188 h-294 item d-flex justify-content-center p-2 m-3 rounded"
       style={{ width: "188px", height: "294px" }}
-      className="w-188 item d-flex justify-content-center p-2 m-3 rounded"
     >
       <Card.Img
         variant="top"
