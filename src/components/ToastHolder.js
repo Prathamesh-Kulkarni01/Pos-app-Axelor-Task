@@ -11,11 +11,13 @@ function ToastHolder(_props) {
   const { toastArray } = useContext(Context);
 
   return (
-    <ToastContainer position="bottom-end" className="p-3">
+  
+    <ToastContainer position="bottom-end" sx={{}} className="p-3">
       {toastArray.map((val, key) => (
         <ToastItem key={key} item={val} />
       ))}
     </ToastContainer>
+   
   );
 }
 

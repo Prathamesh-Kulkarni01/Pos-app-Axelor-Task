@@ -15,6 +15,7 @@ import Cart from "./Cart";
 
 function TopBar() {
   const { filterBy, sortBy, cart } = useContext(Context);
+  
   const navFields = ["All", "Fruits", "Vegetables", "Seeds"];
 
   const sortFields = ["Title", "Price", "Category"];

@@ -14,10 +14,14 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
+
       <CartContext>
         <TopBar />
+        <Container fluid className="mt-5 holder">
         <ToastHolder />
-        <Container fluid className="mt-5">
+        </Container>
+        
+        <Container fluid className="mt-5 ">
           <Row className="m-0 p-0">
             <Col sm={8} className="m-0 p-0">
               <ItemHolder />
@@ -27,6 +31,7 @@ function App() {
             </Col>
           </Row>
         </Container>
+     
       </CartContext>
     </div>
   );

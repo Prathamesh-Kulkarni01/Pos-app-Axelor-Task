@@ -26,7 +26,7 @@ const CartContext = ({ children }) => {
 
   //Removing item from toast stack
   const onTostRemove = (id) => {
-    setToastArray((newArray) => newArray.filter((i) => i.id === id));
+    // setToastArray((newArray) => newArray.filter((i) => i.id === id));
   };
   //filter
   const filterBy = (query) => {

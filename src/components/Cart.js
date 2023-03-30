@@ -11,7 +11,7 @@ const QuantityButtons = styled(Button)`
   font-size: 20px;
   padding: 10px;
   line-height: 0;
-  height: 25px;
+  height: 25px;cccccc
   width: 10px;
   border-radius: 4px;
   margin: 1px 5px 1px 4px;

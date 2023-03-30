@@ -3,10 +3,13 @@
   width: 100%;
   top: 0;
   left: 0;
+  height: 100%;
   right: 0;
+position: relative;
   overflow: hidden;
 }
 body {
+
   overflow-x: hidden;
 }
 div {
@@ -22,4 +25,14 @@ div {
 .cart_budge {
   padding: 0px 7px;
   font-size: 13px;
+}
+.holder{
+z-index: 100;
+height: 90vh;
+width: 400px;
+position: fixed;
+pointer-events: none;
+top: 0;
+right: 0;
+bottom: 30;
 }
